@@ -95,7 +95,7 @@ These questions are hard to answer. But we should take a brief example about thr
 
 Lets assume our framework is doing all the encryption related bits and pieces good. You want to encrypt the files that hold your users secret information. Those files are saved to `/path/to/mysite/tmp/` folder. Your application runs on `/path/to/mysite/www/` folder.
 
-What could happen if your server gets compromised? Are you storing the encryption keys in your mysite folder or so? If yes, the attacker can now possibly read not only your (encrypted) files, but also your encryption keys. It is easy to see that encrypting the session data didn't help you at all. Maybe it was just some false sense of security, or maybe it looked good on paper?
+What could happen if your server gets compromised? Are you storing the encryption keys in your `mysite` folder or so? If yes, the attacker can now possibly read not only your (encrypted) files, but also your encryption keys. It is easy to see that encrypting those files didn't help you at all. Maybe it was just some false sense of security, or maybe it looked good on paper?
 
 Encryption and related data security is such a broad and complicated topic that you maybe should not do it on your own. Even if all the encryption tools does their job properly, you still can not be sure did you cover all the doors and windows. Since the adversary does not need to play by any rules there is no way to know what to expect.
 
