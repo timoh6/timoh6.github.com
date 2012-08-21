@@ -1,0 +1,19 @@
+---
+layout: default
+title: timoh's pages
+---
+
+<div id="home">
+  <h1>Blog Posts</h1>
+  <ul class="posts">
+    {% for post in site.posts %}
+      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
+  </ul>
+
+  <h1>Open Source Projects</h1>
+  <ul class="posts">
+    <li><a href="https://github.com/timoh6/TCrypto/">TCrypto:</a> TCrypto is a simple and flexible PHP 5.3+ key-value storage library.</li>
+    <li><a href="https://github.com/timoh6/GenPhrase/">GenPhrase:</a> GenPhrase is a secure passphrase generator for PHP applications.</li>
+  </ul>
+</div>
