@@ -104,7 +104,7 @@ It is surprisingly to see, as previous mentioned, that no matter how hard people
 What can you do then?
 ---------------------
 
-You should use well known and vetted high-level libraries to perform encryption operations. If the library is asking you to choose "mode" or "cipher" or "iv" etc. Changes are you have to change the library.
+You should use well known and vetted high-level libraries to perform encryption operations. If the library is asking you to choose "mode" or "cipher" or "iv" etc. You have to probably change the library.
 
 Hire professional security experts to pinpoint flaws in your code. Make sure good guys finds the holes and design flaws before bad guys does. 
 
