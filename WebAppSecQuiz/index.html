@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Web Application Security Quiz</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="css/quiz.css" rel="stylesheet" media="screen">
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/knockout-2.2.1.min.js"></script>
+<script src="js/questions/questions-1.0.0.min.js"></script>
+<script src="js/quiz-1.0.0.min.js"></script>
+
+<script>
+$(document).ready(function () {
+    $('#gameArea').show();
+
+    var Quiz = new QuizViewModel();
+    ko.applyBindings(Quiz);
+
+    $(window).bind('beforeunload', function () {
+        if (Quiz.quizState() === 'inGame') {
+            return 'Leave?';
+        }
+    });
+});
+</script>
+</head>
+<body>
+
+<div class="container-narrow">
+
+    <h1 class="text-center">Web Application Security Quiz</h1>
+
+    <noscript>
+        <div class="alert alert-error">
+            You must enable JavaScript to take this quiz
+        </div>
+    </noscript>
+
+    <div id="gameArea" style="display: none;">
+        <div id="pageStart" class="start" data-bind="if: quizState() === 'start'">
+
+            <p class="lead"><em><span class="text-info">Web Application Security Quiz</span></em> tests your knowledge
+                on the common security principles and
+                quirks related to web application development.</p>
+
+            <p class="lead">There are <span class="text-info" data-bind="text: questionsCount()"></span> questions. A
+                correct answer adds one point. An incorrect answer subtracts
+                one point. If you don't know the right answer, you can skip the question (no points are added or
+                subtracted).</p>
+            <button id="startQuiz" class="btn btn-large btn-success" data-bind="click: startQuiz">Start Now</button>
+        </div>
+
+        <div id="pageQuestions" class="row-fluid marketing" data-bind="if: quizState() === 'inGame'">
+            <div class="span12">
+
+                <p class="pull-right muted"><strong>Question: <span data-bind="text: questionNumber()"></span> / <span
+                        data-bind="text: questionsCount()"></span></strong></p>
+
+                <div class="clearfix"></div>
+
+                <div id="alert-area" class="alert alert-error hide">
+                    You must answer this question.
+                </div>
+
+                <div class="questionArea" data-bind="html: displayQuestion"></div>
+
+                <ul id="answers" class="unstyled">
+                    <!-- ko foreach: displayAnswers -->
+                    <li>
+                        <label class="radio">
+                            <input type="radio" name="answer"
+                                   data-bind="attr: { value: id }, checked: $root.answerIsChecked()">
+                            <span data-bind="html: answer"></span>
+                        </label>
+                    </li>
+                    <!-- /ko -->
+                    <li>
+                        <label class="radio">
+                            <input type="radio" name="answer" value="-1" data-bind="checked: $root.answerIsChecked()">
+                            <span class="muted">Skip</span>
+                        </label>
+                    </li>
+                </ul>
+
+                <p class="submit">
+                    <button class="btn" data-bind="click: submitAnswer">Submit</button>
+                </p>
+
+                <div class="pagination">
+                    <span class="pull-left"><button class="btn btn-link" type="button"
+                                                    data-bind="click: gotoPrevious, disable: $root.previousDisabled()">&laquo;
+                        Previous
+                    </button></span>
+                    <span class="pull-right"><button class="btn btn-link" type="button"
+                                                     data-bind="click: gotoNext, disable: $root.nextDisabled()">
+                        Next &raquo;</button></span>
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="pageResults" class="row-fluid marketing" data-bind="if: quizState() === 'results'">
+            <div class="span12">
+
+                <h3>Your results:</h3>
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                    <th>Correct answers</th>
+                    <th>Incorrect answers</th>
+                    <th>Skipped</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="correct" data-bind="text: answersCorrect()"></td>
+                        <td class="incorrect" data-bind="text: answersIncorrect()"></td>
+                        <td class="skipped" data-bind="text: answersSkipped()"></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <div class="points-line">
+                    <span class="score-maximum pull-left" data-bind="visible: pointsTotal() === questionsCount()">Excellent!</span>
+                    <span class="score pull-right">Points: <span data-bind="text: pointsTotal()"></span> / <span
+                            data-bind="text: questionsCount()"></span></span>
+
+                    <div class="clearfix"></div>
+                </div>
+
+                <p><a href="#" data-bind="click: toggleCorrectAnswerVisibility">View correct answers</a></p>
+
+                <div data-bind="visible: correctAnswersVisible">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                        <th>#</th>
+                        <th>Question</th>
+                        <th>Your Answer</th>
+                        <th>Correct Answer</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!-- ko foreach: displayCorrectAnswers() -->
+                        <tr>
+                            <td class="summary-number" data-bind="text: number"></td>
+                            <td class="summary-question" data-bind="html: question"></td>
+                            <td class="summary-answer" data-bind="html: yourAnswer, css: cssClass"></td>
+                            <td class="summary-answer" data-bind="html: correctAnswer"></td>
+                        </tr>
+                        <!-- /ko -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>
+                    <span class="pull-right"><button class="btn btn-success" type="button"
+                                                     data-bind="click: $root.restart">Restart
+                    </button></span>
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <hr>
+
+    <div class="footer">
+        <p class="text-right"><a href="http://timoh6.github.io">http://timoh6.github.io</a>
+            <br>
+            <small><span class="muted">Questions version 1.0.0</span></small>
+        </p>
+    </div>
+
+</div>
+
+</body>
+</html>
