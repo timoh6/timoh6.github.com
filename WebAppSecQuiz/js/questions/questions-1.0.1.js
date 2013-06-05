@@ -6,7 +6,7 @@ questionData = [
             { id: 1, answer: 'Blacklisting' }
         ],
         currentAnswer: ko.observable(-2),
-        correctAnswer: 1
+        correctAnswer: 0
     },
     {
         question: 'Your application sets a cookie with <span class="text-info">Secure</span> attribute. What does this mean?',
