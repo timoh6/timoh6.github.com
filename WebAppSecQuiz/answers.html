@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Web Application Security Quiz - The Answers</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/quiz.css" rel="stylesheet" media="screen">
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/knockout-2.2.1.min.js"></script>
+    <script src="js/questions/questions-1.1.0.min.js"></script>
+    <script src="js/quiz-1.0.0.min.js"></script>
+
+    <style type="text/css">
+        .table th, .table td {
+            border: none;
+            line-height: 20px;
+            padding: 6px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .summary-commentary {
+            width: 100%;
+        }
+
+        .strong {
+            font-weight: bold;
+        }
+    </style>
+
+    <script>
+        $(document).ready(function () {
+            function QuizAnswersCommentaryModel() {
+                var self = this;
+
+                self.quizState = ko.observable('start');
+                self.currentQuestion = ko.observable(0);
+                self.correctAnswersVisible = ko.observable(false);
+                self.questions = ko.observableArray(questionData);
+
+                self.displayAnswersCommentary = function () {
+                    var data = [];
+
+                    for (var i = 0; i < self.questions().length; i++) {
+                        var correctAnswerId = self.questions()[i]['correctAnswer'];
+                        var question = self.questions()[i].question;
+                        var correctAnswer = self.questions()[i]['answers'][correctAnswerId].answer;
+                        var comment = self.questions()[i]['comment'];
+                        var number = i + 1;
+                        var numberPrint = '#' + number;
+                        var divider = i === self.questions().length - 1 ? '' : '<hr>';
+
+                        data.push({'number': numberPrint, 'question': question, 'correctAnswer': correctAnswer, 'comment': comment, 'divider': divider});
+                    }
+
+                    return data;
+                }
+            }
+
+            ko.applyBindings(new QuizAnswersCommentaryModel());
+        });
+    </script>
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-34249225-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+
+    </script>
+</head>
+<body>
+
+<div class="container-narrow">
+
+    <h1 class="text-center">Web Application Security Quiz - The Answers</h1>
+
+    <noscript>
+        <div class="alert alert-error">
+            You must enable JavaScript to view the answers
+        </div>
+    </noscript>
+
+    <p class="lead">Here are the answers with some commentary for the <a href="index.html">Web Application Security
+        Quiz</a>.</p>
+
+    <p>Comments / questions? Leave a comment at the bottom of the page, or send an <a
+            href="mailto: timoh6@gmail.com">email</a>.</p>
+
+    <table class="table" style="margin-top: 40px; margin-bottom: 40px;">
+        <tbody>
+        <!-- ko foreach: displayAnswersCommentary() -->
+        <tr>
+            <td class="summary-number strong" data-bind="text: number"></td>
+            <td class="summary-commentary">
+                <div style="margin: 0;" class="questionArea" data-bind="html: question"></div>
+            </td>
+        </tr>
+        <tr>
+            <td class="strong">Answer</td>
+            <td class="summary-commentary" data-bind="html: correctAnswer"></td>
+        </tr>
+        <tr>
+            <td class="strong">Commentary</td>
+            <td class="summary-commentary" data-bind="html: comment"></td>
+        </tr>
+        <tr>
+            <td colspan="2" data-bind="html: divider"></td>
+        </tr>
+        <!-- /ko -->
+        </tbody>
+    </table>
+
+    <div id="disqus_thread"></div>
+    <script>
+        (function () {
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = 'http://timoh.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    <hr>
+
+    <div class="footer">
+        <p class="text-right">
+            <a href="index.html">Web Application Security Quiz</a>
+            <br>
+            <a href="http://timoh6.github.io">http://timoh6.github.io</a>
+        </p>
+    </div>
+
+</div>
+
+</body>
+</html>

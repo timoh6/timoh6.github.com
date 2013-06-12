@@ -1,45 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>Web Application Security Quiz</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-<link href="css/quiz.css" rel="stylesheet" media="screen">
-<script src="js/jquery-1.9.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/knockout-2.2.1.min.js"></script>
-<script src="js/questions/questions-1.0.1.min.js"></script>
-<script src="js/quiz-1.0.0.min.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Web Application Security Quiz</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/quiz.css" rel="stylesheet" media="screen">
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/knockout-2.2.1.min.js"></script>
+    <script src="js/questions/questions-1.1.0.min.js"></script>
+    <script src="js/quiz-1.0.0.min.js"></script>
 
-<script>
-$(document).ready(function () {
-    $('#gameArea').show();
+    <script>
+        $(document).ready(function () {
+            $('#gameArea').show();
 
-    var Quiz = new QuizViewModel();
-    ko.applyBindings(Quiz);
+            var Quiz = new QuizViewModel();
+            ko.applyBindings(Quiz);
 
-    $(window).bind('beforeunload', function () {
-        if (Quiz.quizState() === 'inGame') {
-            return 'Leave?';
-        }
-    });
-});
-</script>
-<script type="text/javascript">
+            $(window).bind('beforeunload', function () {
+                if (Quiz.quizState() === 'inGame') {
+                    return 'Leave?';
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript">
 
-     var _gaq = _gaq || [];
-     _gaq.push(['_setAccount', 'UA-34249225-1']);
-     _gaq.push(['_trackPageview']);
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-34249225-1']);
+        _gaq.push(['_trackPageview']);
 
-     (function() {
-       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-     })();
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
 
-   </script>
+    </script>
 </head>
 <body>
 
@@ -64,7 +67,19 @@ $(document).ready(function () {
                 correct answer adds one point. An incorrect answer subtracts
                 one point. If you don't know the right answer, you can skip the question (no points are added or
                 subtracted).</p>
-            <button id="startQuiz" class="btn btn-large btn-success" data-bind="click: startQuiz">Start Now</button>
+
+            <p>
+                <button id="startQuiz" class="btn btn-large btn-success" data-bind="click: startQuiz">Start Now</button>
+            </p>
+
+            <div style="text-align: left; margin-top: 60px;">
+                <p>
+                    <span class="label label-info">Heads Up!</span>
+                    <small>The correct answers with commentary is now availabe at <a
+                            href="answers.html">answers.html</a>.
+                    </small>
+                </p>
+            </div>
         </div>
 
         <div id="pageQuestions" class="row-fluid marketing" data-bind="if: quizState() === 'inGame'">
@@ -125,9 +140,9 @@ $(document).ready(function () {
                 <table class="table">
                     <thead>
                     <tr>
-                    <th>Correct answers</th>
-                    <th>Incorrect answers</th>
-                    <th>Skipped</th>
+                        <th>Correct answers</th>
+                        <th>Incorrect answers</th>
+                        <th>Skipped</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -147,16 +162,16 @@ $(document).ready(function () {
                     <div class="clearfix"></div>
                 </div>
 
-                <p><a href="#" data-bind="click: toggleCorrectAnswerVisibility">View correct answers</a></p>
+                <p><a href="#" data-bind="click: toggleCorrectAnswerVisibility">Quick view answers</a></p>
 
                 <div data-bind="visible: correctAnswersVisible">
                     <table class="table">
                         <thead>
                         <tr>
-                        <th>#</th>
-                        <th>Question</th>
-                        <th>Your Answer</th>
-                        <th>Correct Answer</th>
+                            <th>#</th>
+                            <th>Question</th>
+                            <th>Your Answer</th>
+                            <th>Correct Answer</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -173,6 +188,11 @@ $(document).ready(function () {
                 </div>
 
                 <p>
+                    <a href="answers.html">View answers with commentary</a>
+                    <small><span class="muted">(leaves the quiz)</span></small>
+                </p>
+
+                <p>
                     <span class="pull-right"><button class="btn btn-success" type="button"
                                                      data-bind="click: $root.restart">Restart
                     </button></span>
@@ -187,7 +207,7 @@ $(document).ready(function () {
     <div class="footer">
         <p class="text-right"><a href="http://timoh6.github.io">http://timoh6.github.io</a>
             <br>
-            <small><span class="muted">Questions version 1.0.1</span></small>
+            <small><span class="muted">Questions version 1.1.0</span></small>
         </p>
     </div>
 
