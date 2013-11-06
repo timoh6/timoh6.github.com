@@ -50,7 +50,7 @@ Special need for random integers
 
 If you happen to need a random integer, say, in the range from 1 to 10. We have a problem in the PHP. That is because we have only `mt_rand()` and `rand()`, but both of them are not cryptographically secure.
 
-This kind of function needs some care to do right. First, you need bytes from `/dev/urandom`. But you need also some specialization to make those bytes a random integer in the specified range and maintain uniform distribution. For example, it is not an accident that the Openwall passphrase generator [pwqgen](http://www.openwall.com/passwdqc/) happens to have exactly 4096 words to choose from.
+This kind of function needs some care to do right on arbitrary ranges. First, you need bytes from `/dev/urandom`. But you need also some specialization to make those bytes a random integer in the specified range and maintain uniform distribution. For example, it is not an accident that the Openwall passphrase generator [pwqgen](http://www.openwall.com/passwdqc/) happens to have exactly 4096 words to choose from.
 
 There is a [Random Compat library](https://github.com/ircmaxell/random_compat) for PHP applications to help with random bytes and integers. I'm personally not happy with all the design details in the library, but it is probably your best bet for now. Therefore I recommend it.
 
