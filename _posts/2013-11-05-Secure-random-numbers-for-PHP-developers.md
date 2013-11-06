@@ -58,6 +58,17 @@ In the Random Compat library, [I'd prefer](https://github.com/ircmaxell/random_c
 
 Time will tell if my approach will be preferred. But the sure thing is, PHP needs this kind of library in the core.
 
+Conclusion
+----------
+
+As said in the previous paragraph, your best bet is probably to use [Random Compat library](https://github.com/ircmaxell/random_compat).
+
+If you prefer simpler approach and you only need raw bytes, you can gather the bytes using `/dev/urandom` or the Windows equivalent CryptGenRandom. This is done using `mcrypt_create_iv($bytes, MCRYPT_DEV_URANDOM)` function call. Pay attention you use `MCRYPT_DEV_URANDOM` (and pay attention you are on PHP 5.3+).
+
+You can also read straight from the `/dev/urandom` using `fopen` et al. if you are on Unix-like host.
+
+
+
 
 
 
