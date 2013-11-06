@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<html lang="en">
 <head>
-   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>{{ page.title }}</title>
-   <meta name="author" content="timoh" />
 
    <!-- syntax highlighting CSS -->
    <link rel="stylesheet" href="/css/syntax.css" type="text/css" />
 
    <!-- Homepage CSS -->
-   <link rel="stylesheet" href="/css/screen.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
 
    <script type="text/javascript">
 
@@ -27,24 +28,24 @@
 </head>
 <body>
 
-<div class="site">
-  <div class="title">
-    <a class="extra" href="/">Home</a>
-      <a class="extra" href="http://timoh6.github.io/WebAppSecQuiz/">Web App Sec Quiz</a>
-  </div>
+<div class="container">
+
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="navbar-default">
+            <ul class="nav navbar-nav">
+                <li><a href="http://timoh6.github.io">Home</a></li>
+                <li><a href="http://timoh6.github.io/WebAppSecQuiz">Web App Sec Quiz</a></li>
+                <li><a href="https://github.com/timoh6">GitHub</a></li>
+            </ul>
+        </div>
+    </nav>
   
   {{ content }}
-  
-  <div class="footer">
-    <div class="contact">
-      <p>
-        <a href="https://github.com/timoh6">timoh</a><br />
-        timoh6@gmail.com<br /><br />
-	Layout by <a href="http://github.com/mojombo/jekyll">Tom Preston-Werner</a>
-      </p>
+
+    <hr>
+    <div>
+        <p>timoh6@gmail.com</p>
     </div>
-    
-  </div>
 </div>
 
 </body>
