@@ -45,10 +45,10 @@ Also, [@tqbf](https://twitter.com/tqbf) put it concise: <https://news.ycombinato
 
 > Secure programs should rely on /dev/urandom, to the exclusion of other CSPRNGs, and should specifically eschew userland CSPRNG engines even when they're seeded from /dev/urandom.
 
-Trust the experts
------------------
+How are the experts doing it?
+-----------------------------
 
-Especially in the field of cryptography, it is better to trust the experts. If you look at the [NaCl](http://nacl.cr.yp.to/) [source code](http://hyperelliptic.org/nacl/nacl-20110221.tar.bz2), you see there is nothing magical going on under the hood. What NaCl does is plain simple `/dev/urandom` read (with proper error checking).
+Especially in the field of cryptography, it is better to trust the experts. For example, if you look at the [NaCl](http://nacl.cr.yp.to/) [source code](http://hyperelliptic.org/nacl/nacl-20110221.tar.bz2), you see there is nothing magical going on under the hood. What NaCl does is plain simple `/dev/urandom` read (with proper error checking).
 
 
 Special need for random integers
