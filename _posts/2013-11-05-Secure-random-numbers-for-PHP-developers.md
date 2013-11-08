@@ -91,7 +91,7 @@ If you prefer simpler approach and you only need raw bytes, you can gather the b
 You can also read straight from the `/dev/urandom` using `fopen` et al. if you are on Unix-like host.
 
 <div>
-    <span class="label label-primary">08 Nov 2013</span> <span class="text-info">Post revisited to add some additional detail and polish. View changes at [GitHub](https://github.com/timoh6/timoh6.github.com/commits/master/_posts/2013-11-05-Secure-random-numbers-for-PHP-developers.md).</span>
+    <span class="label label-primary">08 Nov 2013</span> <span class="text-info">Post revisited to add some additional detail and polish.</span>
 </div>
 
 
