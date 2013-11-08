@@ -69,7 +69,8 @@ There is a [Random Compat library](https://github.com/ircmaxell/random_compat) f
 <?php
 // We construct a "non secure" Random object.
 // It uses /dev/urandom and is therefore actually secure
-// (as long as your system supports at least either /dev/urandom or mcrypt extension or OpenSSL extension).
+// as long as your system supports at least either
+// /dev/urandom or mcrypt extension or OpenSSL extension.
 require 'random.php';
 $random_compat = new PHP\Random();
 $int = $random_compat->int(1000);
