@@ -40,17 +40,13 @@ Unfortunately Linux comes with two interfaces for random numbers. I say unfortun
 For more about `/dev/urandom` see this [answer by Thomas Pornin](http://security.stackexchange.com/a/3939)
 
 <div>
-    <blockquote>
-        <p>Or, to say it in less words: use /dev/urandom and be happy; use /dev/random and be sorry.</p>
-    </blockquote>
+  <blockquote><p>Or, to say it in less words: use /dev/urandom and be happy; use /dev/random and be sorry.</p></blockquote>
 </div>
 
 Also, [@tqbf](https://twitter.com/tqbf) put it concise: <https://news.ycombinator.com/item?id=6216101>
 
 <div>
-    <blockquote>
-        <p>Secure programs should rely on /dev/urandom, to the exclusion of other CSPRNGs, and should specifically eschew userland CSPRNG engines even when they're seeded from /dev/urandom.
-    </blockquote>
+  <blockquote><p>Secure programs should rely on /dev/urandom, to the exclusion of other CSPRNGs, and should specifically eschew userland CSPRNG engines even when they're seeded from /dev/urandom.</blockquote>
 </div>
 
 Trust the experts
