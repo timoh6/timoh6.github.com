@@ -97,7 +97,7 @@ No algorithm or setting will save passwords like "password" or "12345" etc. This
 
 _Password policy_ is a difficult topic and would require its own post, but we can summarize it by a recommendation: _Use a good program to tell if the password is considered to be strong enough. Reject if not._
 
-Anton Dedov's [Testing of Password Policy](http://www.slideshare.net/DefconRussia/anton-dedov-testing-of-password-policy) presentation at [ZeroNights 2013](http://2013.zeronights.org/) conference takes a look at different password policy enforcement tools and ends up concluding "_[Passwdqc](http://www.openwall.com/passwdqc/) and [zxcvbn](https://github.com/lowe/zxcvbn) look the best_".
+Anton Dedov's [Testing of Password Policy](http://www.slideshare.net/DefconRussia/anton-dedov-testing-of-password-policy) presentation at [ZeroNights 2013](http://2013.zeronights.org/) conference takes a look at different password policy enforcement tools and ends up concluding _"[Passwdqc](http://www.openwall.com/passwdqc/) and [zxcvbn](https://github.com/lowe/zxcvbn) look the best"_.
 
 There's also an article [_How to manage a PHP application's users and passwords_](http://www.openwall.com/articles/PHP-Users-Passwords) by [Solar Designer](https://twitter.com/solardiz), where he explains (among many other relevant things) the usage of [passwdqc](http://www.openwall.com/passwdqc/) program in PHP application to enforce a password policy. This is a _good_ read, and not only for PHP developers.
  
