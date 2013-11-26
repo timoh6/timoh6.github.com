@@ -93,7 +93,7 @@ How to make user's passwords more secure?
 
 Proper password hashing is clearly not enough to make sure the password hashes are not weak. The other half of the job is a good password policy.
 
-No algorithm or setting will save passwords like "_password_" or "_12345_" etc. This is why we need to make sure the user's password will initially contain enough entropy itself.
+No algorithm or setting will save passwords like "password" or "12345" etc. This is why we need to make sure the user's password will initially contain enough entropy itself.
 
 _Password policy_ is a difficult topic and would require its own post, but we can summarize it by a recommendation: _Use a good program to tell if the password is considered to be strong enough. Reject if not._
 
