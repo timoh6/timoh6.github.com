@@ -99,7 +99,7 @@ _Password policy_ is a difficult topic and would require its own post, but we ca
 
 Anton Dedov's [Testing of Password Policy](http://www.slideshare.net/DefconRussia/anton-dedov-testing-of-password-policy) presentation at [ZeroNights 2013](http://2013.zeronights.org/) conference takes a look at different password policy enforcement tools and ends up concluding _"[Passwdqc](http://www.openwall.com/passwdqc/) and [zxcvbn](https://github.com/lowe/zxcvbn) look the best"_.
 
-There's also an article [_How to manage a PHP application's users and passwords_](http://www.openwall.com/articles/PHP-Users-Passwords) by [Solar Designer](https://twitter.com/solardiz), where he explains (among many other relevant things) the usage of [passwdqc](http://www.openwall.com/passwdqc/) program in PHP application to enforce a password policy. This is a _good_ read, and not only for PHP developers.
+There's also an article [_How to manage a PHP application's users and passwords_](http://www.openwall.com/articles/PHP-Users-Passwords#enforcing-password-policy) by [Solar Designer](https://twitter.com/solardiz), where he explains (among many other relevant things) the usage of [passwdqc](http://www.openwall.com/passwdqc/) program in PHP application to enforce a password policy. This is a _good_ read, and not only for PHP developers.
  
 Conclusion
 ----------
