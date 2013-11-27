@@ -23,9 +23,9 @@ In this post I don't go into specific details and best practices about all aspec
 Password stretching
 -------------------
 
-What happens when passwords are "iterated" thousands of times or even hundred of thousands times (depending on the algorithm)? What happens is we are slowing down the adversary, which practically means we are increasing entropy in the password.
+What happens when passwords are "iterated" thousands of times or even hundred of thousands times (depending on the algorithm)? What happens is we are slowing down the adversary, just as additional entropy in the password would do. This is why we say: _stretching increases entropy in the password_.
 
-Without password stretching - if the adversary has to do one unit of work to test for a candidate password - and with stretched password she has to do 1024 units of work to test for a candidate password, we actually increased the entropy in a password effectively by 10 bits, which roughly corresponds to one additional word in the password. It is clear that this is significant. The user whose password is being attacked can benefit from "one random extra word" in his password while he doesn't have to memorize that additional "word" at all.
+Without password stretching - if the adversary has to do one unit of work to test for a candidate password - and with stretched password she has to do 1024 units of work to test for a candidate password, we actually effectively increased the entropy in a password by 10 bits, which roughly corresponds to one additional word in the password. It is clear that this is significant. The user whose password is being attacked can benefit from "one random extra word" in his password while he doesn't have to memorize that additional "word" at all.
 
 For example, if you pick a passphrase containing two _random_ words from a word list which contains 4096 words, you'll have a passphrase which has 24 bits of entropy (12 bits per word). The adversary has to do [approximately](http://en.wikipedia.org/wiki/Brute-force_attack) 2^23 guesses to discover the password (assuming she knows how the password was constructed).
 
