@@ -23,7 +23,7 @@ In this post I don't go into specific details and best practices about all aspec
 Password stretching
 -------------------
 
-What happens when passwords are "iterated" thousands of times or even hundred of thousands times (depending on the algorithm)? What happens is we are slowing down the adversary, which practically means we are in fact increasing entropy in the password.
+What happens when passwords are "iterated" thousands of times or even hundred of thousands times (depending on the algorithm)? What happens is we are slowing down the adversary, which practically means we are increasing entropy in the password.
 
 Without password stretching - if the adversary has to do one unit of work to test for a candidate password - and with stretched password she has to do 1024 units of work to test for a candidate password, we actually increased the entropy in a password effectively by 10 bits, which roughly corresponds to one additional word in the password. It is clear that this is significant. The user whose password is being attacked can benefit from "one random extra word" in his password while he doesn't have to memorize that additional "word" at all.
 
@@ -31,12 +31,12 @@ For example, if you pick a passphrase containing two _random_ words from a word 
 
 If "one guess" corresponds a bcrypt call with 05 as the cost parameter (2^5 rounds of stretching), an adversary who can perform 50 000 guesses of bcrypt with 05 as the cost per second will have to spend about 168 seconds cracking the password. If the cost parameter was 10 (2^10 rounds of stretching), the adversary has to spend about 90 minutes cracking the same password.
 
-In the previous example we added 5 bits of entropy to the password by increasing the bcrypt work factor from 2^5 to 2^10. But as the calculations show, this is probably not enough to save the password, as long as the adversary is willing to spend at least about 90 minutes of her time cracking the password.
+In the previous example we effectively added 5 bits of entropy to the password by increasing the bcrypt work factor from 2^5 to 2^10. But as the calculations show, this is probably not enough to save the password, as long as the adversary is willing to spend at least about 90 minutes of her time cracking the password.
 
 Just stretch more?
 ------------------
 
-If we added 10 bits of entropy to the password by increasing the bcrypt cost parameter from 05 to 15 (2^5 to 2^10 increase in work factor), the adversary has to spend about 48 hours cracking the password. This is now probably enough to stop the most impatient attacks, but it is still no way near "even moderate safe" state. 
+If we effectively added 10 bits of entropy to the password by increasing the bcrypt cost parameter from 05 to 15 (2^5 to 2^15 increase in work factor), the adversary has to spend about 48 hours cracking the password. This is now probably enough to stop the most impatient attacks, but it is still no way near "even moderate safe" state.
 
 At the same time we are making the password more secure, we are making trouble for our own system. Especially in the case of interactive web application logins. Now our authentication (and sign and so on) process has to perform bcrypt with 15 as the cost parameter every time a password hash has to be calculated.
 
