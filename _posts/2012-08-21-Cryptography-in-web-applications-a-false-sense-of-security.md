@@ -3,7 +3,7 @@ layout: post
 title: "Cryptography in web applications: a false sense of security?"
 ---
 
-h1. {{ page.title }}
+# {{ page.title }}
 
 Does your framework of choice offer an easy way to perform data encryption? Maybe you have even utilized data encryption in some format. Something like:
 
