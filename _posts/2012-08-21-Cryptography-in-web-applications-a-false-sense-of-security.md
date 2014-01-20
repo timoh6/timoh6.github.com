@@ -116,4 +116,3 @@ Footnote
 --------
 
 This post is based on what I have seen on the PHP community. There are big players and smaller players who utilize data encryption in their frameworks, but hardly anybody does it carefully. It seems to be often more like a deep wish rather than solid engineering and expertise behind how the encryption routines are build and brought to the masses.
-
