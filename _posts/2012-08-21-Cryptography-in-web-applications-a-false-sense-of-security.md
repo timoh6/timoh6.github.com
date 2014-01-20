@@ -3,15 +3,14 @@ layout: post
 title: "Cryptography in web applications: a false sense of security?"
 ---
 
-{{ page.title }}
-================
+h1. {{ page.title }}
 
 Does your framework of choice offer an easy way to perform data encryption? Maybe you have even utilized data encryption in some format. Something like:
 
-```php
+{% highlight php %}
 <?php
 $secret = Crypter::encrypt('Secret data');
-```
+{% endhighlight %}
 
 It could not be much easier than that. It is hard to argue. But things won't stay as simple as this if you look at the meaning of "secure data encryption" a little bit closer.
 
@@ -44,14 +43,14 @@ We have talked about CBC mode encryption and you might recall that CBC mode requ
 
 Using quality random numbers is the answer. More precise answer is to let the underlying operating system generate those bit strings for you. Using PHP, you can end up generating random numbers using for example:
 
-```php
+{% highlight php %}
 <?php
 mt_rand();
 rand();
 mcrypt_create_iv();
 uniqid();
 openssl_random_pseudo_bytes(); // etc.
-```
+{% endhighlight %}
 
 Now you should pick the appropriate methods to generate the random data. This is again one cornerstone where you could go wrong. If you are really paranoid, you read the bytes from `/dev/random`. At least on Linux systems, your web application suddenly became horribly slow. Something went wrong.
 
@@ -67,10 +66,10 @@ Implementation errors
 
 Lets take a quick look at the lower level code details. People often want to encrypt using AES-256. They write something like:
 
-```php
+{% highlight php %}
 <?php
 mcrypt_encrypt(MCRYPT_RIJNDAEL_256, $key, $value, $mode, $iv);
-```
+{% endhighlight %}
 
 What could go wrong? If you have tested your encryption routines against some known "AES test vectors", you probably came into conclusion that something is wrong here. There is a mismatch between your encryption output and those test vectors. It is not about $key or $value or $iv, but the reason is you did not perform AES-256 encryption at all. Instead, you encrypted the data with 256-bit Rijndael cipher, which is not AES. It is not a well studied algorithm and not a standard. You may not want to build your encryption routines on the shoulders of such an algorithm.
 
@@ -78,10 +77,10 @@ Another common problem is "error tolerance". Say, your application tries to gene
 
 Many systems gets the encryption keys from a configuration file. While this itself could be a warning sign, it gets worse when the key gets modified like:
 
-```php
+{% highlight php %}
 <?php
 $key = md5(Config::get('encryption_key'));
-```
+{% endhighlight %}
 
 The main problem here is not `md5()`, but the hex-output. The entropy is efficiently truncated because the whole "character space" will not be used. It is also important to note that encryption algorithms are sensitive about keys. However, this is usually hidden behind the front door. MCrypt for example will happily accept keys as long as they are no longer than the maximum key size. If the key is too short, it is automatically padded. Zero length keys are fine.
 
