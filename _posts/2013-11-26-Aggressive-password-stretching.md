@@ -77,14 +77,17 @@ Work factor defaults among common web frameworks
 * [Django 1.6](https://docs.djangoproject.com/en/dev/topics/auth/passwords/) defaults to `PBKDF2` using 12 000 iterations. `Bcrypt` can be optionally used and it defaults to 12 as the cost parameter. It is interesting to note why there is such a big gap between `PBKDF2` work factor and `bcrypt` work factor.
 * Ruby on Rails 4.0 [SecurePassword](http://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html) module defaults to `bcrypt` using 10 as the cost parameter.
 * [Zend Framework 2.2](http://framework.zend.com/manual/2.2/en/modules/zend.crypt.password.html) defaults to `bcrypt` using 14 as the cost parameter.
+* [Zend Framework 2.3](http://framework.zend.com/manual/2.2/en/modules/zend.crypt.password.html) defaults to `bcrypt` using 10 as the cost parameter.
 * Symfony 2.3 [SecurityBundle](http://symfony.com/doc/current/reference/configuration/security.html#using-the-bcrypt-password-encoder) has an option to use `bcrypt`, defaulting to 13 as the cost parameter. 
 * PHP 5.5 native [password_hash()](http://php.net/password_hash) function defaults to `bcrypt` using 10 as the cost parameter.
 
-Concentrating on interactive logins, it seems Zend Framework and Symfony2 SecurityBundle are using quite high work factors, especially Zend's 14 seems too high to be a default value. Django's default work factor for `bcrypt` seems also a bit high (~230 ms on the i5 machine).
+Concentrating on interactive logins, it seems Zend Framework 2.2 and Symfony2 SecurityBundle are using quite high work factors, especially Zend's 14 seems too high to be a default value. Django's default work factor for `bcrypt` seems also a bit high (~230 ms on the i5 machine).
 
-PHP's `password_hash()` function and Ruby on Rails SecurePassword module defaults to sensible work factor (10) for bcrypt.
+PHP's `password_hash()` function, Zend Framework 2.3 and Ruby on Rails SecurePassword module defaults to sensible work factor (10) for bcrypt.
 
-Of course the choice of work factor depends on the server and situation, but presumably PHP and RoR does the best job by choosing a generic default using bcrypt with 2^10 iterations, in 2013.
+**Update 12 Mar 2014** Zend Framework 2.3 decreased the default `bcrypt` cost setting to 10. Making it more suitable as a generic default for web environment.
+
+Of course the choice of work factor depends on the server and situation, but presumably PHP, Zend Framework 2.3 and RoR does the best job by choosing a generic default using bcrypt with 2^10 iterations, in 2014.
 
 However, you have to always benchmark and adjust accordingly the work factor parameters (everybody deploying their app does that, right?).
 
