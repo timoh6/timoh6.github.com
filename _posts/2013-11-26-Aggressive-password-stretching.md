@@ -77,7 +77,7 @@ Work factor defaults among common web frameworks
 * [Django 1.6](https://docs.djangoproject.com/en/dev/topics/auth/passwords/) defaults to `PBKDF2` using 12 000 iterations. `Bcrypt` can be optionally used and it defaults to 12 as the cost parameter. It is interesting to note why there is such a big gap between `PBKDF2` work factor and `bcrypt` work factor.
 * Ruby on Rails 4.0 [SecurePassword](http://api.rubyonrails.org/classes/ActiveModel/SecurePassword/ClassMethods.html) module defaults to `bcrypt` using 10 as the cost parameter.
 * [Zend Framework 2.2](http://framework.zend.com/manual/2.2/en/modules/zend.crypt.password.html) defaults to `bcrypt` using 14 as the cost parameter.
-* [Zend Framework 2.3](http://framework.zend.com/manual/2.2/en/modules/zend.crypt.password.html) defaults to `bcrypt` using 10 as the cost parameter.
+* [Zend Framework 2.3](http://framework.zend.com/manual/2.3/en/modules/zend.crypt.password.html) defaults to `bcrypt` using 10 as the cost parameter.
 * Symfony 2.3 [SecurityBundle](http://symfony.com/doc/current/reference/configuration/security.html#using-the-bcrypt-password-encoder) has an option to use `bcrypt`, defaulting to 13 as the cost parameter. 
 * PHP 5.5 native [password_hash()](http://php.net/password_hash) function defaults to `bcrypt` using 10 as the cost parameter.
 
