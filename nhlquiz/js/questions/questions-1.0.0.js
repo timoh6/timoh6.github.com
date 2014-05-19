@@ -31,7 +31,7 @@ questionData = [
         ],
         currentAnswer: ko.observable(-2),
         correctAnswer: 2,
-        comment: 'For more information, see <a href="http://www.quanthockey.com/nhl/records/most-goals-in-one-season-by-nhl-players.html">Wikipedia</a>.'
+        comment: 'For more information, see <a href="http://www.quanthockey.com/nhl/records/most-goals-in-one-season-by-nhl-players.html">quanthockey.com</a>.'
     },
     {
         question: 'The first NHL season in which a player scored 100 points was the 1968–69 season. Who was the player to first achieve this record?',
