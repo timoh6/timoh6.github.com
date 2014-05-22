@@ -163,6 +163,6 @@ questionData = [
         ],
         currentAnswer: ko.observable(-2),
         correctAnswer: 1,
-        comment: 'Teemu Selänne was the first European named All-Star MVP in the history of NHL (on January 18, 1998). For more information, see <a href="http://en.wikipedia.org/wiki/48th_National_Hockey_League_All-Star_Game#The_game">Wikipedia</a>. A few years earlier, Dominik Hašek was chosen as the game MVP, but <a href="http://en.wikipedia.org/wiki/46th_National_Hockey_League_All-Star_Game#Additional_information">Jim Kelley overruled the vote</a> because Ray Bourque scored the game winner and the game was in Boston, where Bourque played most of his career.'
+        comment: 'Teemu Selänne was the first European named All-Star Game MVP in the history of the NHL (on January 18, 1998). For more information, see <a href="http://en.wikipedia.org/wiki/48th_National_Hockey_League_All-Star_Game#The_game">Wikipedia</a>. A few years earlier, Dominik Hašek was chosen as the game MVP, but <a href="http://en.wikipedia.org/wiki/46th_National_Hockey_League_All-Star_Game#Additional_information">Jim Kelley overruled the vote</a> because Ray Bourque scored the game winner and the game was in Boston, where Bourque played most of his career.'
     }
 ];
