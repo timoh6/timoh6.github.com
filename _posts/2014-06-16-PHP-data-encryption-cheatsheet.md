@@ -86,13 +86,11 @@ Ideally, use a separate hardware to store keys (i.e. HSM).
 
 If this is not possible, one method to mitigate the attack surface is by encrypting your key file (or config file) with a key stored in a separate location from the actual key file (separate from the home/www folder). For example, you can use an Apache environment variable via httpd.conf to store the master key:
 
-```
-<VirtualHost *:80>
-SetEnv master_key crypto_strong_high_entropy_key
-# You can access this variable in PHP using $_SERVER['master_key']
-# Rest of the config
-</VirtualHost>
-```
+    <VirtualHost *:80>
+    SetEnv master_key crypto_strong_high_entropy_key
+    # You can access this variable in PHP using $_SERVER['master_key']
+    # Rest of the config
+    </VirtualHost>
 
 Now, if your www-root (including your key/config file) leaks i.e. via backup tape, the encrypted data is still safe as long as the `master_key` environment variable stays secret. Remember to have a separate backup of the httpd.conf file (e.g. in a safe) and make sure you do not leak the `master_key` via `phpinfo()`.
 
