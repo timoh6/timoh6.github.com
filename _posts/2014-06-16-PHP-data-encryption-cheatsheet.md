@@ -88,9 +88,9 @@ If this is not possible, one method to mitigate the attack surface is by encrypt
 
 ```
 <VirtualHost *:80>
-  SetEnv master_key crypto_strong_high_entropy_key
-  # You can access this variable in PHP using $_SERVER['master_key']
-  # Rest of the config
+SetEnv master_key crypto_strong_high_entropy_key
+# You can access this variable in PHP using $_SERVER['master_key']
+# Rest of the config
 </VirtualHost>
 ```
 
