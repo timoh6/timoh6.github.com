@@ -74,7 +74,7 @@ If you have the keys stored in a file, say, hex encoded, do not decode them prio
 
 Low entropy keys should be avoided in the first place. But if you need to rely on, say, user's passwords, you need to use as high PBKDF2 iteration count as possible to squeeze as much security as possible out of the passwords.
 
-PBKDF2 algorithm can be adjusted for specific iteration count. The higher the iteration count the higher the security of the derived key.
+PBKDF2 algorithm can be adjusted for specific iteration count. The higher the iteration count the higher the security of the derived key. If your code runs on 64-bit platform, use `sha512` as the underlying PBKDF2 hashing algorithm. If you are on 32-bit platform, use `sha256` as the underlying hashing algorithm.
 
 In general, it is not possible to use relatively high iteration count in online applications (which face the public internet). And thus the added security to the key will not be as high as in more ideal situation (i.e. an offline application could use higher iteration count without the fear of an DoS attack). As a rule of thumb, for online applications, adjust the PBKDF2 iteration count to take less than 100 ms.
 
