@@ -94,7 +94,7 @@ If this is not possible, one method to mitigate the attack surface is by encrypt
     # Rest of the config
     </VirtualHost>
 
-Now, if your www-root (including your key/config file) leaks i.e. via backup tape, the encrypted data is still safe as long as the `master_key` environment variable stays secret. Remember to have a separate backup of the httpd.conf file (e.g. in a safe) and make sure you do not leak the `master_key` via `phpinfo()`.
+Now, if your www-root (including your key/config file) leaks i.e. via backup tape, the encrypted data is still safe as long as the `keyfile_key` environment variable stays secret. Remember to have a separate backup of the httpd.conf file (e.g. in a safe) and make sure you do not leak the `keyfile_key` via `phpinfo()`.
 
 If you use a specific key file (instead of a config parameter), it is feasible to rotate keys. In the worst-case scenario where an adversary has got your encryption/authentication keys and nobody knows that, rotating the keys by some period of time might cut her access (assuming she can not get the new keys). This may make the damage smaller because the adversary can not abuse the leaked keys endlessly.
 
