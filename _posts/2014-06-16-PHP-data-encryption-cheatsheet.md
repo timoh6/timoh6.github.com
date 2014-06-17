@@ -76,7 +76,7 @@ Low entropy keys should be avoided in the first place. But if you need to rely o
 
 PBKDF2 algorithm can be adjusted for specific iteration count. The higher the iteration count the higher the security of the derived key. If your code runs on 64-bit platform, use `sha512` as the underlying PBKDF2 hashing algorithm. If you are on 32-bit platform, use `sha256` as the underlying hashing algorithm.
 
-In general, it is not possible to use relatively high iteration count in online applications (which face the public internet). And thus the added security to the key will not be as high as in more ideal situation (i.e. an offline application could use higher iteration count without the fear of an DoS attack). As a rule of thumb, for online applications, adjust the PBKDF2 iteration count to take less than 100 ms.
+In general, it is not possible to use relatively high iteration count in online applications (which face the public internet). And thus the added security to the key will not be as high as in more ideal situation (i.e. an offline application could use higher iteration count without the fear of a DoS attack). As a rule of thumb, for online applications, adjust the PBKDF2 iteration count to take less than 100 ms.
 
 If you can use high entropy passwords (or config parameter etc.), you don't need to stretch them as much as low entropy passwords. For example if you created "master_encryption_key" and "master_authentication_key" using `/dev/urandom`, you don't need PBKDF2 necessarily at all. This is because the initial keys contains already enough guessing entropy. Just make sure you input raw bytes to the encryption/authentication routines, as earlier mentioned.
 
