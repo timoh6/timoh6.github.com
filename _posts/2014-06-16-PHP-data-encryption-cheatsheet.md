@@ -68,6 +68,8 @@ _Do not_ use same key for encryption and authentication. As seen above, you need
 
 With PBKDF2 you can derive 64 bytes from a single password/master key and use, say, the first 32 bytes for encryption and the last 32 bytes for authentication.
 
+If you have the keys stored in a file, say, hex encoded, do not decode them prior to feeding to the encryption routines. Instead, as earlier mentioned, use PBKDF2 to turn the hex encoded keys into proper encryption/authentication keys. Or use SHA-256 (with raw output) to hash the hex encoded keys and turn them into proper raw bytes (the use of "plain" hashing assumes the initial keys has enough guessing entropy, as explained in the next paragraphs).
+
 ### Key stretching
 
 Low entropy keys should be avoided in the first place. But if you need to rely on, say, user's passwords, you need to use as high PBKDF2 iteration count as possible to squeeze as much security as possible out of the passwords.
@@ -76,19 +78,19 @@ PBKDF2 algorithm can be adjusted for specific iteration count. The higher the it
 
 In general, it is not possible to use relatively high iteration count in online applications (which face the public internet). And thus the added security to the key will not be as high as in more ideal situation (i.e. an offline application could use higher iteration count without the fear of an DoS attack). As a rule of thumb, for online applications, adjust the PBKDF2 iteration count to take less than 100 ms.
 
-If you can use high entropy passwords (or config parameter etc.), you don't need to stretch them as much as low entropy passwords. For example if you created a "master key" using `/dev/urandom`, you don't need PBKDF2 necessarily at all. This is because the initial key contains already enough guessing entropy.
+If you can use high entropy passwords (or config parameter etc.), you don't need to stretch them as much as low entropy passwords. For example if you created "master_encryption_key" and "master_authentication_key" using `/dev/urandom`, you don't need PBKDF2 necessarily at all. This is because the initial keys contains already enough guessing entropy. Just make sure you input raw bytes to the encryption/authentication routines, as earlier mentioned.
 
-However, it is easy to derive both the encryption and authentication keys with PBKDF2 from the single master password (just use low iteration count, i.e. 1).
+However, it is easy to derive both the encryption and authentication keys with PBKDF2 from the _single_ master password (just use low iteration count, i.e. 1). This is useful if you have only one "master key" which should be derived for both the encryption and authentication use.
 
 ### Key storage and management
 
 Ideally, use a separate hardware to store keys (i.e. HSM).
 
-If this is not possible, one method to mitigate the attack surface is by encrypting your key file (or config file) with a key stored in a separate location from the actual key file (separate from the home/www folder). For example, you can use an Apache environment variable via httpd.conf to store the master key:
+If this is not possible, one method to mitigate the attack surface is by encrypting your key file or config file (which holds the actual encryption/authentication keys) with a key stored in a separate location from the actual key file (separate from the home/www folder). For example, you can use an Apache environment variable via httpd.conf to store the key needed to unlock the actual key file:
 
     <VirtualHost *:80>
-    SetEnv master_key crypto_strong_high_entropy_key
-    # You can access this variable in PHP using $_SERVER['master_key']
+    SetEnv keyfile_key crypto_strong_high_entropy_key
+    # You can access this variable in PHP using $_SERVER['keyfile_key']
     # Rest of the config
     </VirtualHost>
 
