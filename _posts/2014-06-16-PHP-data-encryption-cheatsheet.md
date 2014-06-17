@@ -47,9 +47,9 @@ Data authentication
 
 **Always** authenticate the encrypted data.
 
-Use _Encrypt-then-MAC construction_. That is, first encrypt the data and finally take an HMAC-SHA-256 of the resulted ciphertext, and include all the relevant pieces under the HMAC (namely ciphertext and nonce).
+Use [Encrypt-then-MAC construction](http://www.daemonology.net/blog/2009-06-24-encrypt-then-mac.html). That is, first encrypt the data and finally take an HMAC-SHA-256 of the resulted ciphertext, and include all the relevant pieces under the HMAC (namely ciphertext and nonce).
 
-When decrypting, first check the HMAC using a constant-time string comparison (do not directly compare `$user_submitted_mac` and `$calculated_mac` with === string comparison). Or compare the strings using "[double HMAC verification](https://www.isecpartners.com/blog/2011/february/double-hmac-verification.aspx)". This is to avoid leaking exploitable timing information.
+When decrypting, first check the HMAC using a constant-time string comparison (do not directly compare `$user_submitted_mac` and `$calculated_mac` with === string comparison). Or better yet, compare the strings using "[double HMAC verification](https://www.isecpartners.com/blog/2011/february/double-hmac-verification.aspx)". This is to avoid leaking exploitable timing information that occurs on the === string comparison.
 
 If the HMAC matches, the ciphertext is safe to feed to decrypt process. If the HMAC does not match, exit immediately.
 
