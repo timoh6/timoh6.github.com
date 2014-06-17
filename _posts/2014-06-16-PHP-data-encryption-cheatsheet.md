@@ -42,6 +42,8 @@ There are some data length limits with AES in CTR mode. While not probably in pr
 
 Also, CTR mode is only safe when you **do not** reuse nonces under a single key. That is why it is important to create the nonces with cryptographically secure random number generator. At the same time it means you must not encrypt more than 2^64 different messages with a single key (as the nonce space with AES is 128 bits, it is important to limit the number of messages (nonces) to 2^128/2 because of the birthday paradox).
 
+And remember that encrypting the data will not hide, most importantly, the fact how much data you are sending. As a drastic example, if you only encrypt messages containing "yes" / "no", the plain encryption do not hide the confidential details.
+
 Data authentication
 -------------------
 
