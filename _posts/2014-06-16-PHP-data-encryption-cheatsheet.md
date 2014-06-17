@@ -15,7 +15,7 @@ Naturally the recommendations given here are not the "only possible way" to hand
 Encryption functions available in PHP
 -------------------------------------
 
-Use either Mcrypt extension or OpenSSL extension.
+Use either [Mcrypt extension](http://php.net/mcrypt) or [OpenSSL extension](http://fi2.php.net/openssl).
 
 Encryption algorithm / mode of operation / nonce (initializing vector)
 ----------------------------------------------------------------------
