@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "PHP data encryption cheatsheet"
+title: "PHP data encryption primer"
 ---
 
 {{ page.title }}
@@ -8,9 +8,13 @@ title: "PHP data encryption cheatsheet"
 
 A short guide to help to avoid the common mistakes and pitfalls with symmetric data encryption using PHP.
 
-This cheatsheet assumes a "client-server" situation, which is probably a typical case with PHP applications.
+This primer assumes a "client-server" situation, which is probably a typical case with PHP applications.
 
-Naturally the recommendations given here are not the "only possible way" to handle data encryption in PHP, but this cheatsheet aims to be straightforward and tries to leave less room for mistakes and (possibly confusing) choices.
+Naturally the recommendations given here are not the "only possible way" to handle data encryption in PHP, but this primer aims to be straightforward and tries to leave less room for mistakes and (possibly confusing) choices.
+
+<div>
+    <span class="label label-primary">18 Jun 2014</span> <span class="text-info">Post title was revised from "PHP data encryption cheatsheet" to "PHP data encryption primer".</span>
+</div>
 
 Encryption functions available in PHP
 -------------------------------------
