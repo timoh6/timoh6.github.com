@@ -8,10 +8,15 @@ title: "PHP data encryption primer"
 
 A short guide to help to avoid the common mistakes and pitfalls with symmetric data encryption using PHP.
 
-This primer assumes a "client-server" situation, which is probably a typical case with PHP applications.
+This primer assumes "storing data at rest" situation (web server handles the encryption, possibly affected by a web client by providing plaintext/password etc.), which is probably a typical case with PHP applications.
+
+**Note**, this primer should **not** be used to construct encrypted network connections which has more complicated needs. For such use cases, consider using [spiped](https://www.tarsnap.com/spiped.html) or [TLS](http://en.wikipedia.org/wiki/Transport_Layer_Security).
 
 Naturally the recommendations given here are not the "only possible way" to handle data encryption in PHP, but this primer aims to be straightforward and tries to leave less room for mistakes and (possibly confusing) choices.
 
+<div>
+    <span class="label label-primary">26 Jun 2014</span> <span class="text-info">Post revised to mention and warn about encrypted network connections, updated the PHP userland PBKDF2 link.</span>
+</div>
 <div>
     <span class="label label-primary">18 Jun 2014</span> <span class="text-info">Post title was revised from "PHP data encryption cheatsheet" to "PHP data encryption primer".</span>
 </div>
@@ -32,11 +37,19 @@ The nonce length must be 128 bits (16 bytes) and must contain raw bytes, _not_ e
 
 With Mcrypt, AES is known as `rijndael-128`. With OpenSSL, it is respectively `AES-256-CTR`.
 
+Using Mcrypt:
+
 {% highlight php %}
 <?php
 // $key length must be exactly 256 bits (32 bytes).
 // $nonce length must be exactly 128 bits (16 bytes).
 $ciphertext = mcrypt_encrypt(MCRYPT_RIJNDAEL_128, $key, $plaintext, 'ctr', $nonce); // Mcrypt
+{% endhighlight %}
+
+Using OpenSSL:
+
+{% highlight php %}
+<?php
 $ciphertext = openssl_encrypt($plaintext, 'AES-256-CTR', $key, true, $nonce); // OpenSSL
 {% endhighlight %}
 
@@ -64,9 +77,9 @@ Encryption and authentication keys
 
 Ideally, use keys generated using cryptographically secure random number generator (see more about random number generation [here](#random-numbers)). With AES-256 you need 32 bytes of random data (raw bytes, _not_ encoded).
 
-If you have to rely on user typed keys (ie. a config parameter), it needs to be derived to be suitable to use as an encryption key. Use PBKDF2 algorithm to turn a human supplied key into an encryption key. See [http://php.net/hash_pbkdf2](http://php.net/hash_pbkdf2) (and make sure to use raw output).
+If you have to rely on user typed keys (ie. a config parameter), it needs to be stretched to be suitable to use as an encryption key. Use PBKDF2 algorithm to turn a human supplied key into an encryption key. See [http://php.net/hash_pbkdf2](http://php.net/hash_pbkdf2) (and make sure to use raw output).
 
-If you are not on PHP 5.5 or higher, you have to use an userland PHP PBKDF2 implementation. One such implementation can be found here: [https://github.com/defuse/password-hashing/blob/master/PasswordHash.php#L87](https://github.com/defuse/password-hashing/blob/master/PasswordHash.php#L87).
+If you are not on PHP 5.5 or higher, you have to use an userland PHP PBKDF2 implementation. One such implementation can be found here: [https://defuse.ca/php-pbkdf2.htm](https://defuse.ca/php-pbkdf2.htm).
 
 **Note** that when relying on userland implementations, you can not stretch the key as much as you could with more efficient PHP's native `hash_pbkdf2()` function, which means you can not squeeze as much security out of the user supplied key.
 
