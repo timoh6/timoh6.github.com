@@ -50,6 +50,8 @@ Using OpenSSL:
 
 {% highlight php %}
 <?php
+// $key length must be exactly 256 bits (32 bytes).
+// $nonce length must be exactly 128 bits (16 bytes).
 $ciphertext = openssl_encrypt($plaintext, 'AES-256-CTR', $key, true, $nonce); // OpenSSL
 {% endhighlight %}
 
