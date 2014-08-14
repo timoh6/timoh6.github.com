@@ -7,7 +7,9 @@ title: timoh's pages
   <h2>Blog Posts</h2>
   <ul>
     {% for post in site.posts %}
-      <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+      {% unless post.draft %}
+        <li><span>{{ post.date | date_to_string }}</span> &raquo; <a href="{{ post.url }}">{{ post.title }}</a></li>
+      {% endunless %}
     {% endfor %}
   </ul>
   
