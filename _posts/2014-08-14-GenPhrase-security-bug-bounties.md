@@ -15,15 +15,15 @@ draft: true
 
 Due to the nature of the library, security is an absolute requirement (this is a reason GenPhrase is based on Openwall pwqgen).
 
-To emphasise the security effort put on GenPhrase, I start a small GenPhrase security bug bounty program. I donate **$100** to award people who find security bugs in the GenPhrase library.
+To emphasise the security effort put on GenPhrase and to make the software better, I start a small GenPhrase security bug bounty program. I donate **$100** to award people who find security bugs in the GenPhrase library.
 
 The **$100 bounty** is split into smaller categories as follows:
 
-1.  **$30** for bugs which allow malicious code execution or causes the generated passphrases to contain less entropy that was requested, i.e. with default settings (under certain "random byte output") only two words are returned instead of three words, or if one element was being chosen from a set of 20 elements and only 19 different elements could get returned etc.
+1.  **$30** for bugs which causes the generated passphrases to contain less entropy that was requested, i.e. with default settings (under certain "random byte output") only two words are returned instead of three words, or if one element was being chosen from a set of 20 elements and only 19 different elements could get returned etc. And bugs which allow malicious code execution.
 2.  **$20** for bugs which causes the "elements" being chosen on non-uniform fashion.
 3.  **$5** for bugs which causes the "elements" being chosen on slightly non-uniform fashion or allows malicious code execution via __unknown__ weaknesses in PHP core functions used by GenPhrase.
 
-Note that bugs caused by a buggy (or malicious) system random number generator are not subject to a bounty. Also, side-channels (i.e. in functions used to pick elements etc.) which are not practically exploitable are not subject to a bounty.
+Bugs caused by a buggy (or malicious) system random number generator or "bad/invalid" wordlists added outside of the library are not subject to a bounty. Also, side-channels (i.e. in functions used to pick elements etc.) which are not practically exploitable are not subject to a bounty.
 
 The target version of GenPhrase is always the latest tagged release on GitHub.
 
