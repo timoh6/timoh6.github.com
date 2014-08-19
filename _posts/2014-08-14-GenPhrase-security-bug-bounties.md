@@ -25,7 +25,9 @@ The **$100 bounty** is split into smaller categories as follows:
 
 Bugs caused by a buggy (or malicious) system random number generator or "bad/invalid" wordlists added outside of the library are not subject to a bounty. Also, side-channels (i.e. in functions used to pick elements etc.) which are not practically exploitable are not subject to a bounty.
 
-The target version of GenPhrase is always the latest tagged release on GitHub.
+The target version of GenPhrase is always the latest tagged release on GitHub:
+
+[https://github.com/timoh6/GenPhrase/tags](https://github.com/timoh6/GenPhrase/tags)
 
 Found a security bug?
 ---------------------
@@ -45,5 +47,5 @@ If the $100 bounty gets depleted, no more payments will be made until further no
 
 The security bug bounty will be active until further notice.
 
-<p class="text-muted"><small>This security bug bounty page was inspired by <a href="http://www.tarsnap.com/bugbounty.html">Tarsnap Bug Bounties</a></small></p>
+<p class="text-muted"><small>This security bug bounty page was inspired by <a href="http://www.tarsnap.com/bugbounty.html">Tarsnap Bug Bounties</a>.</small></p>
 
