@@ -11,11 +11,11 @@ draft: true
 
 <div class="image-holder"><img src="/image/bughunt.jpg" alt="Security Bug Hunt" class="image-responsive"><small>Photo: REUTERS</small></div>
 
-[GenPhrase](https://github.com/timoh6/GenPhrase) is a small PHP library (based on passwdqc's [pwqgen](http://www.openwall.com/passwdqc/) program) which I maintain, used to generate secure and easy to remember passphrases.
+[GenPhrase](https://github.com/timoh6/GenPhrase) is a small PHP library (based on passwdqc's [pwqgen](http://www.openwall.com/passwdqc/) program) used to generate secure and easy to remember passphrases.
 
 Due to the nature of the library, security is an absolute requirement (this is a reason GenPhrase is based on Openwall pwqgen).
 
-To emphasise the security effort put on GenPhrase and to make the software better, I start a small GenPhrase security bug bounty program. I donate **$100** to award people who find security bugs in the GenPhrase library.
+To emphasise the security effort put on GenPhrase _and_ to make the software better, I start a small GenPhrase security bug bounty program. I donate **$100** to award people who find security bugs in the GenPhrase library.
 
 The **$100 bounty** is split into smaller categories as follows:
 
@@ -44,4 +44,6 @@ About payments
 If the $100 bounty gets depleted, no more payments will be made until further notice. This page will be kept updated about how much of the bounty is still available.
 
 The security bug bounty will be active until further notice.
+
+<p class="muted">This security bug bounty page was inspired by <a href="http://www.tarsnap.com/bugbounty.html">Tarsnap Bug Bounties</a></p>
 
