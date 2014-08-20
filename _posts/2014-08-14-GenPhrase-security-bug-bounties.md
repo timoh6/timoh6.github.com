@@ -7,8 +7,6 @@ draft: true
 {{ page.title }}
 ================
 
-<div class="alert alert-danger" role="alert">THIS IS A DRAFT, THE BOUNTY IS NOT YET ACTIVE. </div>
-
 <div class="image-holder"><img src="/image/bughunt.jpg" alt="Security Bug Hunt" class="image-responsive"><small>Photo: REUTERS</small></div>
 
 [GenPhrase](https://github.com/timoh6/GenPhrase) is a small PHP library (based on passwdqc's [pwqgen](http://www.openwall.com/passwdqc/) program) used to generate secure and easy to remember passphrases.
