@@ -43,7 +43,7 @@ About payments
 
 If the $100 bounty gets depleted, no more payments will be made until further notice. This page will be kept updated about how much of the bounty is still available.
 
-The security bug bounty will be active until further notice.
+**The security bug bounty will be active until further notice.**
 
 <p class="text-muted"><small>This security bug bounty page was inspired by <a href="http://www.tarsnap.com/bugbounty.html">Tarsnap Bug Bounties</a>.</small></p>
 
