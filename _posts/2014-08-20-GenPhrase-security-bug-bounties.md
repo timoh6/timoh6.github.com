@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "GenPhrase Security Bug Bounties"
-draft: true
 ---
 
 {{ page.title }}
