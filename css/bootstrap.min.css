@@ -27,3 +27,7 @@ body {
     text-align: center;
     border-radius: 4px;
 }
+.twitter-image {
+    margin: 0 5px 0 0;
+    border: 0 none;
+}
