@@ -20,7 +20,7 @@ The **$100 bounty** is split into smaller categories as follows:
 2.  **$30** for bugs which causes the "elements" being chosen on non-uniform fashion.
 3.  **$5** for bugs which causes the "elements" being chosen on slightly non-uniform fashion or allows malicious code execution via __unknown__ weaknesses in PHP core functions used by GenPhrase.
 
-<p><span class="label label-info">28 Aug 2014</span> <span class="text-muted">The bounty for category 1 and 2 bugs were raised.</span></p>
+<p><span class="label label-info">28 Aug 2014</span> <span class="text-muted">Bounties for category 1 and 2 bugs were raised.</span></p>
 
 Bugs caused by a buggy (or malicious) system random number generator or "bad/invalid" wordlists added outside of the library are not subject to a bounty. Also, side-channels (i.e. in functions used to pick elements etc.) which are not practically exploitable are not subject to a bounty.
 
