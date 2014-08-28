@@ -16,9 +16,11 @@ To emphasise the security effort put on GenPhrase _and_ to make the software bet
 
 The **$100 bounty** is split into smaller categories as follows:
 
-1.  **$30** for bugs which causes the generated passphrases to contain less entropy that was requested, i.e. with default settings (under certain "random byte output") only two words are returned instead of three words, or if one element was being chosen from a set of 20 elements and only 19 different elements could get returned etc. And bugs which allow malicious code execution.
-2.  **$20** for bugs which causes the "elements" being chosen on non-uniform fashion.
+1.  **$50** for bugs which causes the generated passphrases to contain less entropy that was requested, i.e. with default settings (under certain "random byte output") only two words are returned instead of three words, or if one element was being chosen from a set of 20 elements and only 19 different elements could get returned etc. And bugs which allow malicious code execution.
+2.  **$30** for bugs which causes the "elements" being chosen on non-uniform fashion.
 3.  **$5** for bugs which causes the "elements" being chosen on slightly non-uniform fashion or allows malicious code execution via __unknown__ weaknesses in PHP core functions used by GenPhrase.
+
+<p><span class="label label-info">28 Aug 2014</span> <spam class="text-muted">The bounty for category 1 and 2 bugs were raised.</span></p>
 
 Bugs caused by a buggy (or malicious) system random number generator or "bad/invalid" wordlists added outside of the library are not subject to a bounty. Also, side-channels (i.e. in functions used to pick elements etc.) which are not practically exploitable are not subject to a bounty.
 
