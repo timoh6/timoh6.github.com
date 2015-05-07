@@ -47,15 +47,15 @@ This can be done using *login tokens*, which means we create an unique and unpre
 
 The basic idea is as follows:
 
-**1.** Client enters his username and password and submits the login form.
-**2.** Server checks the credentials (sets login status) and generates a token (say, 128-bit cryptographically strong random number hex-encoded). If the username is not found, return the initial login form.
-**3.** Server updates the "login log" and calculates the needed delay.
-**4.** Server assigns the token, valid after timestamp, user identifier and login status to the client's session.
-**5.** Server returns a form to the client where the token will reside as a hidden field, the markup will contain a message "You can try to log in in a few...". 
-**6.** Client waits the minimum delay and submits the form. If the same form is returned, client waits the second delay and submits the form, and so on.
-**7.** Server checks the token exists in the client's session and verifies current timestamp is greater than the timestamp stored in session. If the token is not found return a fresh login page. If the token is not yet valid, return same form as in point 5.
-**8.** If login status is true, log the client in based on the user id found in the session.
-**9.** If login status is false, a fresh login form (asking for username and password) is returned to the client.
+1. Client enters his username and password and submits the login form.
+2. Server checks the credentials (sets login status) and generates a token (say, 128-bit cryptographically strong random number hex-encoded). If the username is not found, return the initial login form.
+3. Server updates the "login log" and calculates the needed delay.
+4. Server assigns the token, valid after timestamp, user identifier and login status to the client's session.
+5. Server returns a form to the client where the token will reside as a hidden field, the markup will contain a message "You can try to log in in a few...". 
+6. Client waits the minimum delay and submits the form. If the same form is returned, client waits the second delay and submits the form, and so on.
+7. Server checks the token exists in the client's session and verifies current timestamp is greater than the timestamp stored in session. If the token is not found return a fresh login page. If the token is not yet valid, return same form as in point 5.
+8. If login status is true, log the client in based on the user id found in the session.
+9. If login status is false, a fresh login form (asking for username and password) is returned to the client.
 
 In point **6.** the client will not actually know when the token is valid to submit as the server doesn't tell it. The server could reply with a markup saying "You can try to log in in either after 1 second, 3 seconds, 5 seconds, 10 seconds or 15 seconds".
 
@@ -78,7 +78,6 @@ Every time a client sends username and password, and if *a valid username* is fo
 Inserting a new row could go something like this (in PHP):
 
 ```php
-<?php
 $username = $_POST['username'];
 $remote_ip = inet_pton($_SERVER['REMOTE_ADDR']); // inet_pton can handle both IPv4 and IPv6 addresses
 $status = $passwords_matches // Int 1 or 0 from the initial check (point 2. in the above list)
