@@ -77,12 +77,13 @@ Every time a client sends username and password, and if *a valid username* is fo
 
 Inserting a new row could go something like this (in PHP):
 
-```php
+{% highlight php %}
+<?php
 $username = $_POST['username'];
 $remote_ip = inet_pton($_SERVER['REMOTE_ADDR']); // inet_pton can handle both IPv4 and IPv6 addresses
 $status = $passwords_matches // Int 1 or 0 from the initial check (point 2. in the above list)
 $query = "INSERT INTO login_log SET username=?, remote_ip=?, login_attempt_time=NOW(), status=?";
-```
+{% endhighlight %}
 
 Next query the same database to get login attempt count for the username (from any IP) and number of attempts from the source IP (against any other username except the currently requested username) within the last 6 hours:
 
