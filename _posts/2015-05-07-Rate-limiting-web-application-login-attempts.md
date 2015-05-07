@@ -65,13 +65,15 @@ In point **3.** the server needs to calculate appropriate waiting delay. To achi
 
 The database structure for the, say, "login_log" table could look like this:
 
-    `username` varchar(100) NOT NULL
-    `remote_ip` varbinary(16) NOT NULL
-    `login_attempt_time` datetime NOT NULL
-    `status` tinyint(3) unsigned NOT NULL DEFAULT '0',
-     KEY `remote_ip` (`remote_ip`),
-     KEY `login` (`login`),
-     KEY `status_time` (`status`,`time`)
+{% highlight sql %}
+`username` varchar(100) NOT NULL
+`remote_ip` varbinary(16) NOT NULL
+`login_attempt_time` datetime NOT NULL
+`status` tinyint(3) unsigned NOT NULL DEFAULT '0',
+KEY `remote_ip` (`remote_ip`),
+KEY `login` (`login`),
+KEY `status_time` (`status`,`time`)
+{% endhighlight %}
     
 Every time a client sends username and password, and if *a valid username* is found insert a new row in the table. Inserting a new row in the table even if the password matches is a pre-emptive action to guard against leaking possible exploitable timing information about the password validity. Note we do not try to prevent information whether an account (based on the username) exists in the system.
 
