@@ -87,13 +87,13 @@ $query = "INSERT INTO login_log SET username=?, remote_ip=?, login_attempt_time=
 
 Next query the same database to get login attempt count for the username (from any IP) and number of attempts from the source IP (against any other username except the currently requested username) within the last 6 hours:
 
-```sql
+{% highlight sql %}
 SELECT SUM(CASE WHEN remote_ip = ? AND username <> ? THEN 1 ELSE 0 END) AS ip_attempt_count, SUM(CASE WHEN username = ? THEN 1 ELSE 0 END) AS username_attempt_count
 FROM login_log
 WHERE
 STATUS = 0
 AND login_attempt_time > (NOW() - INTERVAL 6 hour) # All failed login attempts within the last 6h
-```
+{% endhighlight %}
 
 The above query counts number of failed login attempts (against any account) from the IP address a current login request is coming from as `ip_attempt_count` and number of failed login attempts against the currently requested username (from any IP) as `username_attempt_count`.
 
