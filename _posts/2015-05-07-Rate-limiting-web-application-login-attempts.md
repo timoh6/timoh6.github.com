@@ -82,7 +82,7 @@ Inserting a new row could go something like this (in PHP):
 {% highlight php %}
 <?php
 $username = $_POST['username'];
-$remote_ip = inet_pton($_SERVER['REMOTE_ADDR']); // inet_pton can handle both IPv4 and IPv6 addresses
+$remote_ip = inet_pton($_SERVER['REMOTE_ADDR']); // inet_pton can handle both IPv4 and IPv6 addresses, consider addressing IPv6 addresses as /64 blocks.
 $status = $passwords_matches // Int 1 or 0 from the initial check (point 2. in the above list)
 $query = "INSERT INTO login_log SET username=?, remote_ip=?, login_attempt_time=NOW(), status=?";
 {% endhighlight %}
