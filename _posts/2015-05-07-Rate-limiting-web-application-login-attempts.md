@@ -18,7 +18,7 @@ If you used a "password" which has, say, 2^128 worth of [guessing entropy](http:
 
 In reality, the situation is usually far from ideal. Passwords like "Password3" and so on are easy to crack offline, but such passwords, and especially without rate-limiting, are also feasible to crack online.
 
-This is why arguably most online system employing credentials should make sure they make the adversary's job guessing a correct credential as hard as possible. Which can be read as *as time consuming as possible*.
+This is why arguably most online systems employing credentials should make sure they make the adversary's job guessing a correct credential as hard as possible. Which can be read as *as time consuming as possible*.
 
 ## Methods to defend against malicious login attempts
 
@@ -37,7 +37,7 @@ While login attempt related threats could be deeply situation-dependent, we can 
 * Attacks against multiple targets from a single source
 * Attacks against multiple targets from multiple sources
 
-As we shouldn't underestimate the adversary, we can focus on the "multiple source" threats.
+It is difficult to act against adversary who tries a few "most common passwords" from many different sources against every account on the system, but we can focus especially on the "multiple source against single account" and "single source" threats. 
 
 If we assume the adversary can mount the login attempts from, say, thousands of unique IP addresses and we do not want to lock the target account (permanently), we must make sure it takes as long as possible to try all the candidate passwords the adversary holds. And we want to do this in such a manner which does not consume endlessly our login server resources (recall rate-limiting with `sleep()` PHP function).
 
@@ -113,9 +113,9 @@ As an example, if there's 10 failed login attempts against the currently request
 
 `1 + (0.5 x 10) + (0.2 x 20)` = **10 seconds**
 
-15 seconds can sound a really small delay, at least in case a massive amount of requests are targeting a single credential, but for the sake of usability we probably must sacrifice from the security side. However, displaying a nice animation or some entertainment while the user is waiting could buy the user some extra patience. Remember to adjust for your specific case.
+15 seconds maximum delay can sound a really small delay, at least in case a massive amount of requests are targeting a single credential, but for the sake of usability we probably must sacrifice from the security side. However, displaying a nice animation or some entertainment while the user is waiting could buy the user some extra patience. Remember to adjust for your specific case.
 
-In addition to setting a delay for the current client, one could find use to display CAPTCHA or require 2-Factor Authentication after a certain threshold.
+**In addition** to setting a "hard delay" for the current client, it is probably a good idea to add CAPTCHA and/or require 2-Factor Authentication after a certain threshold (server-side "hard delays" and client-side challenge-response tests are not mutually exclusive).
 
 And note, the above example is just an **example**. You could for example find it more suitable if failed login attempts within the last 30 minutes has more weight than attempts made 6 hours ago. Or login attempts from foreign country has more weight than attempts from another county, etc.
 
@@ -131,6 +131,10 @@ With the above logic, the maximum 15 seconds delay for alice's account is reache
 
 ## Closing words
 
-The above described method is a self-contained (no external special hardware required) and quite simple method which can be modified precisely for your situation to detect brute-force attempts and which can efficiently slow down these attacks. However, even aggressive login rate-limiting can not save poor passwords, so make sure no weak passwords enters in the system.
+The above described method is a self-contained (no external special hardware required) method which can be modified precisely for your situation to detect brute-force attempts, and act against these attacks. However, even aggressive login rate-limiting can not save poor passwords, so make sure no weak passwords enters in the system.
 
-In the other side of the coin, the login related database handling will require resources. As for single login two database queries must be run (INSERT and SELECT) plus an extra amount of "token requests" are needed. Also, while JavaScript can make the login experience smooth for the end user, but if the end user doesn't have JavaScript enabled the login experience may not be smooth at all.
+In the other side of the coin, the login related database handling will require resources. As for single login two database queries must be run (INSERT and SELECT) plus an extra amount of "token requests" are needed.
+
+Also, while JavaScript can make the login experience smooth for the end user, but if the end user doesn't have JavaScript enabled the login experience may not be smooth at all.
+
+After all, this involves once again traditional *security vs usability* trade-offs.
