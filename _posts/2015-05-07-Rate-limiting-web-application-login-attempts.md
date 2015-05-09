@@ -7,7 +7,7 @@ title: "Rate-limiting web application login attempts"
 ================
 
 <div>
-    <p><span class="label label-primary">09 May 2013</span> <strong><span class="text-danger">NOTE the login token method described in this post is not effective against parallel attacks (see comments). **This post will be revised in the upcoming day to address that.</span></strong></p>
+    <p><span class="label label-primary">09 May 2013</span> <strong><span class="text-danger">NOTE the login token method described in this post is not effective against parallel attacks (see comments). This post will be revised in the upcoming day to address that.</span></strong></p>
 </div>
 
 How can I "throttle logins" or "how can I rate-limit login attempts" is a common question raised from time to time among web application developers.
