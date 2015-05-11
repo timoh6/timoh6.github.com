@@ -33,7 +33,7 @@ If we assume the adversary can mount the login attempts from, say, thousands of 
 
 ## Per-source rate-limit
 
-Unfortunately it is presumably impossible to delay the adversary while never (temporarily) locking out the actual account owner, too. But we can adopt same kind of per-source rate-limit approach used in [popa3d](http://www.openwall.com/popa3d/) to the web environment, to make online password guessing as slow as possible.
+Unfortunately it is presumably impossible to delay the adversary while never (temporarily) locking out the actual account owner, too. But we can adopt same kind of per-source rate-limit and global rate-limit approach used in [popa3d](http://www.openwall.com/popa3d/) to the web environment, to make online password guessing as slow as possible.
 
 We need to set a limit for authentication attempts tied to the source IP address and source IP address block. In general, the limit for the IP address block (say, 123.123.123.1 - 123.123.123.254) will be greater than the limit for a single IP address.
  
