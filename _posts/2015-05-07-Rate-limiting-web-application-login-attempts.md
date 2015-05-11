@@ -43,7 +43,7 @@ IPv6 addresses are probably good to address in `/64` or `/56` blocks.
 
 **Note** you may want to disallow all (login) requests from you local private network.
 
-## Per-account rate-limits
+## Per-account rate-limit
 
 We can also measure attempts against a specific account coming from multiple IP blocks (i.e. from a botnet spanning to hundreds or thousands computers around the world) and thus set *per-account* rate-limit.
  
