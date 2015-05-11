@@ -31,7 +31,7 @@ It is difficult to act against adversary who tries a few "most common passwords"
 
 If we assume the adversary can mount the login attempts from, say, thousands of unique IP addresses and we do not want to lock the target account (permanently), we must make sure it takes as long as possible to try all the candidate passwords the adversary holds. And we want to do this in such a manner which does not consume endlessly our login server resources (recall rate-limiting with `sleep()` PHP function).
 
-## Per-source rate-limit
+## Per-source rate-limits
 
 Unfortunately it is presumably impossible to delay the adversary while never (temporarily) locking out the actual account owner, too. But we can adopt same kind of per-source rate-limit and global rate-limit approach used in [popa3d](http://www.openwall.com/popa3d/) to the web environment, to make online password guessing as slow as possible.
 
@@ -43,13 +43,13 @@ IPv6 addresses are probably good to address in `/64` or `/56` blocks.
 
 **Note** you may want to disallow all (login) requests from you local private network.
 
-## Per-account rate-limit
+## Per-account rate-limits
 
 We can also measure attempts against a specific account coming from multiple IP blocks (i.e. from a botnet spanning to hundreds or thousands computers around the world) and thus set *per-account* rate-limit.
  
 For example, allow max. *5 distinct IP blocks* to try to login against a single account within the last **10 seconds**. The "5 distinct IP blocks" in this example is set to make it harder to harass the account owner by not letting him to login by sending bogus passwords for their username.
 
-## Global rate-limit
+## Global rate-limits
 
 In addition to the per-source and per-account limits, we can measure attempts globally to make sure any attack (attack which isn't already caught by the above rate-limits) can't run faster than X we set.
 
