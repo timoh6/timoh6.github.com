@@ -84,7 +84,7 @@ SUM(CASE WHEN (remote_ip BETWEEN ? AND ?) THEN 1 ELSE 0 END) AS ip_block_attempt
 (SELECT COUNT(DISTINCT remote_ip_block) FROM login_log WHERE username=? AND login_attempt_time >= (NOW() - INTERVAL 10 SECOND )) AS username_attempt_count
 FROM login_log
 WHERE
-login_attempt_time >= (NOW() - INTERVAL 10 minute) # All login attempts within the last 10 seconds
+login_attempt_time >= (NOW() - INTERVAL 10 second) # All login attempts within the last 10 seconds
 {% endhighlight %}
 
 This gives us `global_attempt_count`, `ip_attempt_count`, `ip_block_attempt_count`, and `username_attempt_count`.
