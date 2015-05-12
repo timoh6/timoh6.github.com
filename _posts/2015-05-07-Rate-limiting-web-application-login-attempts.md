@@ -93,7 +93,9 @@ If *global_attempt_count* is greater than **300**, or *ip_attempt_count* is grea
 
 Unfortunately it also affects the actual account holder or an user who is trying to login from the same source address or block where the attack is running. But as earlier said, this can't be entirely avoided, so it's good to tune the "login limiting parameters" as suitable for your use case as possible.  
 
-If the login attempt is not rejected, insert a new row in the log table and proceed with the login.
+If the login attempt is not rejected proceed with the login.
+
+If the credentials are correct, log the user in. If authentication fails, insert a new row into the log database.
  
 Inserting a new row could go something like this (in PHP):
 
@@ -106,6 +108,8 @@ $query = "INSERT INTO login_log SET username=?, remote_ip=?, remote_ip_block=?, 
 {% endhighlight %}
 
 **In addition** to setting a "hard limit" for the current client, it is probably a good idea to add CAPTCHA and/or require 2-Factor Authentication after a certain threshold (server-side "hard limits" and client-side challenge-response tests are not mutually exclusive).
+
+Besides CAPTCHA and 2FA, there are also other countermeasures to deal with online brute-force attacks which can be used in conjunction with rate-limiting, for example, see [Device Cookies](https://www.owasp.org/index.php/Slow_Down_Online_Guessing_Attacks_with_Device_Cookies).
 
 ### About the relational database
 
