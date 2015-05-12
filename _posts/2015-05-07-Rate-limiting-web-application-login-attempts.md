@@ -89,7 +89,13 @@ login_attempt_time >= (NOW() - INTERVAL 10 second) # All login attempts within t
 
 This gives us `global_attempt_count`, `ip_attempt_count`, `ip_block_attempt_count`, and `username_attempt_count`.
 
-If *global_attempt_count* is greater than **300**, or *ip_attempt_count* is greater than **25**, or if *ip_block_attempt_count* is greater than **100** or if *username_attempt_count* is greater than **5**, **reject the login**. This makes the adversary to wait (or change source addresses or target account).
+If *global_attempt_count* is greater than **300** or 
+if *ip_attempt_count* is greater than **25** or
+if *ip_block_attempt_count* is greater than **100** or
+if *username_attempt_count* is greater than **5**
+**reject the login**.
+
+This makes the adversary to wait (or change source addresses or target account).
 
 Unfortunately it also affects the actual account holder or an user who is trying to login from the same source address or block where the attack is running. But as earlier said, this can't be entirely avoided, so it's good to tune the "login limiting parameters" as suitable for your use case as possible.  
 
