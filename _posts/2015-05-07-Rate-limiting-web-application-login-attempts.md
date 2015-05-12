@@ -89,10 +89,10 @@ login_attempt_time >= (NOW() - INTERVAL 10 second) # All login attempts within t
 
 This gives us `global_attempt_count`, `ip_attempt_count`, `ip_block_attempt_count`, and `username_attempt_count`.
 
-If *global_attempt_count* is greater than **300** or 
-if *ip_attempt_count* is greater than **25** or
-if *ip_block_attempt_count* is greater than **100** or
-if *username_attempt_count* is greater than **5**
+If *global_attempt_count* is greater than **300** or  
+if *ip_attempt_count* is greater than **25** or  
+if *ip_block_attempt_count* is greater than **100** or  
+if *username_attempt_count* is greater than **5**  
 **reject the login**.
 
 This makes the adversary to wait (or change source addresses or target account).
