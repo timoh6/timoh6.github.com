@@ -38,7 +38,7 @@ Make sure to **always** generate a new random nonce when encrypting data. This *
 
 The nonce length must be 128 bits (16 bytes) and must contain raw bytes, _not_ encoded in any way.
 
-With OpenSSL, is AES is known as `AES-256-CTR`:
+With OpenSSL, AES is known as `AES-256-CTR`:
 
 {% highlight php %}
 <?php
