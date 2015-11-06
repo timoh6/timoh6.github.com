@@ -15,6 +15,9 @@ This primer assumes "storing data at rest" situation (web server handles the enc
 Naturally the recommendations given here are not the "only possible way" to handle data encryption in PHP, but this primer aims to be straightforward and tries to leave less room for mistakes and (possibly confusing) choices.
 
 <div>
+    <span class="label label-primary">06 Nov 2015</span> <span class="text-info">Removed Mcrypt mentions from the post (except from random number context).</span>
+</div>
+<div>
     <span class="label label-primary">26 Jun 2014</span> <span class="text-info">Post revised to mention and warn about encrypted network connections, updated the PHP userland PBKDF2 link.</span>
 </div>
 <div>
@@ -24,29 +27,18 @@ Naturally the recommendations given here are not the "only possible way" to hand
 Encryption functions available in PHP
 -------------------------------------
 
-Use either [Mcrypt extension](http://php.net/mcrypt) or [OpenSSL extension](http://php.net/openssl).
+Use [OpenSSL extension](http://php.net/openssl).
 
 Encryption algorithm / mode of operation / nonce (initializing vector)
 ----------------------------------------------------------------------
 
-Use **AES-256** in **CTR** mode with random nonce. AES is the standard and can be used with both the Mcrypt and OpenSSL extensions.
+Use **AES-256** in **CTR** mode with random nonce. AES is the standard and can be used with OpenSSL extension.
 
 Make sure to **always** generate a new random nonce when encrypting data. This **must** be done using cryptographically secure randomness source. See more about random number generation [here](#random-numbers). The nonce can be concatenated with the ciphertext to allow decryption.
 
 The nonce length must be 128 bits (16 bytes) and must contain raw bytes, _not_ encoded in any way.
 
-With Mcrypt, AES is known as `rijndael-128`. With OpenSSL, it is respectively `AES-256-CTR`.
-
-Using Mcrypt:
-
-{% highlight php %}
-<?php
-// $key length must be exactly 256 bits (32 bytes).
-// $nonce length must be exactly 128 bits (16 bytes).
-$ciphertext = mcrypt_encrypt(MCRYPT_RIJNDAEL_128, $key, $plaintext, 'ctr', $nonce); // Mcrypt
-{% endhighlight %}
-
-Using OpenSSL:
+With OpenSSL, is AES is known as `AES-256-CTR`:
 
 {% highlight php %}
 <?php
