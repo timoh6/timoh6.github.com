@@ -15,6 +15,9 @@ This primer assumes "storing data at rest" situation (web server handles the enc
 Naturally the recommendations given here are not the "only possible way" to handle data encryption in PHP, but this primer aims to be straightforward and tries to leave less room for mistakes and (possibly confusing) choices.
 
 <div>
+    <span class="label label-primary">11 May 2016</span> <span class="text-info">Add mention about random_bytes() which is available in PHP7 and later.</span>
+</div>
+<div>
     <span class="label label-primary">06 Nov 2015</span> <span class="text-info">Removed Mcrypt mentions from the post (except from random number context).</span>
 </div>
 <div>
@@ -147,6 +150,6 @@ Appendix
 
 ### Cryptographically safe random numbers
 
-Use operating system provided randomness. In PHP, use `mcrypt_create_iv($count, MCRYPT_DEV_URANDOM)` or manually read from `/dev/urandom`.
+Use operating system provided randomness. In PHP, use `random_bytes($count)` which is available in PHP7 and later, `mcrypt_create_iv($count, MCRYPT_DEV_URANDOM)` or manually read from `/dev/urandom`.
 
 Make sure you get the needed amount of bytes. If not, exit immediately (do not try to recover from an error by falling back to home-made randomness construction).
