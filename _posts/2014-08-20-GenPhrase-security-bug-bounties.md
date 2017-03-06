@@ -47,7 +47,7 @@ If the $100 bounty gets depleted, no more payments will be made until further no
 GenPhrase Security Bug Bounty Recipients
 ----------------------------------------
 
-1. March 3. 2017. Words being chosen on (slight/medium) non-uniform fashion, found by Solar Designer. 20 USD Bitcoin payment was made to <a href="https://archive.org/donate/bitcoin.php">The Internet Archive</a> by the request of Solar Designer.
+1. **March 3. 2017**. Words being chosen on (slight/medium) non-uniform fashion, found by Solar Designer. 20 USD Bitcoin payment was made to <a href="https://archive.org/donate/bitcoin.php">The Internet Archive</a> by the request of Solar Designer.
 
 **The security bug bounty will be active until further notice.**
 
