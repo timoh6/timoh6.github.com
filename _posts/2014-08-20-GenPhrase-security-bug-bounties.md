@@ -44,6 +44,11 @@ About payments
 
 If the $100 bounty gets depleted, no more payments will be made until further notice. This page will be kept updated about how much of the bounty is still available.
 
+GenPhrase Security Bug Bounty Recipients
+----------------------------------------
+
+1. March 3. 2017. Words being chosen on (slight/medium) non-uniform fashion, found by Solar Designer. 20 USD Bitcoin payment was made to <a href="https://archive.org/donate/bitcoin.php">The Internet Archive</a> by the request of Solar Designer.
+
 **The security bug bounty will be active until further notice.**
 
 <p class="text-muted"><small>This security bug bounty page was inspired by <a href="http://www.tarsnap.com/bugbounty.html">Tarsnap Bug Bounties</a>.</small></p>
